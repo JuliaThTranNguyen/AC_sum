@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<title>Download File</title>
+<h1>Download File</h1>
+<h2>Select a video to download_path and play</h2>
+<p>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+</p>
+{% if filename %}
+
+<body class="body">
+    <video autoplay="autoplay" controls="controls" preload="preload">
+        <source src="{{ url_for('download_path', filename=filename) }}" type="video/mp4"></source>
+    </video>
+    </div>
+    {% endif %}
+    <form method="post" action="download_vid" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" autocomplete="on" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="download_link">
+
+        </p>
+    </form>
+</body>
